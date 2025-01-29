@@ -8,12 +8,11 @@ const user = {
 const name = "Tom"
 
 
-const formatName = user => {
-    return `${user.firstName} ${user.lastName}`
-}
+const formatName = user => `${user.firstName} ${user.lastName}`;
+
 
 root.render(
     <h1 className ="heading"> 
-    Hello, {name}
+    Hello, {formatName(user)}!
     </h1>
     );
