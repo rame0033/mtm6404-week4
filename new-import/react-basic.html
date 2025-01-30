@@ -1,0 +1,15 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+       const root = ReactDOM.createRoot(document.getElementById('root'))
+        const heading = React.createElement('h1', null, 'Hello, World')
+        root.render(heading);
+    </script>
+</body>

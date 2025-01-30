@@ -1,0 +1,38 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+       const root = ReactDOM.createRoot(document.getElementById('root'))
+       function Welcome(props) {
+            const names = props.names
+            //Expanded Version
+            // const namesObj = colors.map((name, i) => ({
+            // id: i,
+            // name: name
+            // }))
+
+            // compressed 
+            // const namesObj = names.map((name, id) => {name:name, id:id})
+
+            // compressed + Self-assign
+            const namesObj = names.map((name, id) => ({id,name}))
+            console.log(namesObj);
+            if(namesObj.length) {
+                return namesObj.map(person =>
+                    <h1 key={person.id}>Hello, {person.name}.</h1>)
+            }
+        }
+
+       const names = ['Tom', 'Dick', 'Harry']
+        root.render(
+            <Welcome names={names} />
+        );
+    </script>
+</body>

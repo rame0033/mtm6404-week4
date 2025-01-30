@@ -1,0 +1,55 @@
+<head>
+    <meta charset="UTF-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.19.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+       const root = ReactDOM.createRoot(document.getElementById('root'))
+       function Title (props) {
+        console.log();
+            return (
+                <h2>
+                {props.children} 
+                {props.onSale &&
+                    <em> On Sale</em>
+                }
+                </h2>
+            )
+        }
+
+        function Price (props) {
+            const salePrice = props.salePrice;
+            if(salePrice) {
+                return <p>$ <s>{props.children}</s> {props.salePrice}</p>
+            }
+            return <p>$ {props.children}</p>
+        }
+
+        function Product (props) {
+            return <div className="product">{props.children}</div>
+        }
+
+        function App () {
+            return (
+                <>
+                <Product>
+                <Title onSale>USB Mouse</Title>
+                <Price salePrice="10.99">14.99</Price>
+                </Product>
+                <Product>
+                <Title>Monitor</Title>
+                <Price>249.99</Price>
+                </Product>
+                </>
+            )
+        }
+        root.render(
+            <App />
+        );
+    </script>
+</body>
