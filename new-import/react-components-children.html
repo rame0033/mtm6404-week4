@@ -11,45 +11,54 @@
     <script type="text/babel">
        const root = ReactDOM.createRoot(document.getElementById('root'))
        function Title (props) {
-        console.log();
-            return (
-                <h2>
-                {props.children} 
-                {props.onSale &&
-                    <em> On Sale</em>
-                }
-                </h2>
-            )
-        }
-
-        function Price (props) {
-            const salePrice = props.salePrice;
-            if(salePrice) {
-                return <p>$ <s>{props.children}</s> {props.salePrice}</p>
+            
+            // Title component that displays the product title and an "On Sale" label if the product is on sale
+    
+                console.log();
+                return (
+                    <h2>
+                        {props.children} 
+                        {props.onSale &&
+                            <em> On Sale</em> // Conditionally render "On Sale" if the onSale prop is true
+                        }
+                    </h2>
+                );
             }
-            return <p>$ {props.children}</p>
-        }
-
-        function Product (props) {
-            return <div className="product">{props.children}</div>
-        }
-
-        function App () {
-            return (
-                <>
-                <Product>
-                <Title onSale>USB Mouse</Title>
-                <Price salePrice="10.99">14.99</Price>
-                </Product>
-                <Product>
-                <Title>Monitor</Title>
-                <Price>249.99</Price>
-                </Product>
-                </>
-            )
-        }
-        root.render(
-            <App />
-        );
+        
+            // Price component that displays the price, and if there's a sale price, it shows the original price struck through and the sale price
+            function Price(props) {
+                const salePrice = props.salePrice;
+                if (salePrice) {
+                    return <p>$ <s>{props.children}</s> {props.salePrice}</p>; // Show original price struck through and sale price
+                }
+                return <p>$ {props.children}</p>; // Show regular price
+            }
+        
+            // Product component that wraps its children in a div with a class of "product"
+            function Product(props) {
+                return <div className="product">{props.children}</div>;
+            }
+        
+            // App component that renders multiple Product components with Title and Price components as children
+            function App() {
+                return (
+                    <>
+                        <Product>
+                            <Title onSale>USB Mouse</Title>
+                            <Price salePrice="10.99">14.99</Price>
+                        </Product>
+                        <Product>
+                            <Title>Monitor</Title>
+                            <Price>249.99</Price>
+                        </Product>
+                    </>
+                );
+            }
+        
+            // Render the App component into the root element
+            root.render(
+                <App />
+            );
+        
     </script>
 </body>
